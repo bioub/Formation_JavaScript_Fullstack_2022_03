@@ -1,6 +1,9 @@
 const readline = require('readline');
+//    { getRandomInt: function() {}}
+//    { getRandomInt: getRandomInt }
+const { getRandomInt } = require('./random');
 
-class Jeu {
+module.exports = class Jeu {
   constructor(options = {}) {
     const min = options.min ?? 0;
     const max = options.max ?? 100;
