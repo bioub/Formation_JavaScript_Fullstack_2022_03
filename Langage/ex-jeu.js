@@ -56,3 +56,10 @@ function jouer() {
 const essais = [];
 const entierAlea = getRandomInt(0, 100);
 jouer();
+
+// ^
+// |                             question             question
+// |question                     jouer                jouer
+// |jouer                        =>                   =>
+// +-----------------------------ENTREE---------------ENTREE--->
+//

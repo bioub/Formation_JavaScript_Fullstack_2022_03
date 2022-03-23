@@ -23,4 +23,4 @@ function hello(name = '') {
   return `Hello ${name.toUpperCase()}`;
 }
 
-console.log(hello(''));
+console.log(hello());
