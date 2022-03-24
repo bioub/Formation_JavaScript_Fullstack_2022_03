@@ -2,7 +2,6 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const { cp } = require('fs');
 
 mongoose.connect('mongodb://localhost:27017/test');
 
