@@ -33,7 +33,7 @@ async function buildHtml() {
 
   content = content.replace('<script src="./js/horloge.js"></script>', '').replace('js/index.js', 'app.js');
 
-  await fs.writeFile(indexHtmlDistPath, content);
+  await fs.writeFile(indexHtmlDistPath, Buffer.concat(buffers));
 }
 
 async function build() {
