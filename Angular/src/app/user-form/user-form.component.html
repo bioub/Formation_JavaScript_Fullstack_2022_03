@@ -1,0 +1,17 @@
+<form (submit)="addUser($event)">
+  <input placeholder="Votre nom" [value]="user.name" (input)="user.name = $any($event.target).value" />
+  <input placeholder="Votre email" [value]="user.email" (input)="user.email = $any($event.target).value" />
+  <button>+</button>
+</form>
+
+<!--
+  HTMLInputElement -> MDN
+  const inputEl = document.createElement('input');
+  inputEl.placeholder = 'Votre nom';
+  inputEl.value = user.name;
+
+  formEl.addEventListener('submit', ($event) => {
+    addUser($event);
+  })
+
+-->
