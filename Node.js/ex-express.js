@@ -1,22 +1,48 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
+const mongoose = require('mongoose');
+const { cp } = require('fs');
+
+mongoose.connect('mongodb://localhost:27017/test');
+
+const schema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
+    // minlength: 3
+  },
+  completed: {
+    type: Boolean,
+    default: false,
+   }
+});
+const Todo = mongoose.model('Todo', schema);
+
+// Todo.create({title: 'ABC'}).then(() => {});
+// Todo.find().then((todos) => {
+//   todos[0].save()
+// })
+// const todo = new Todo({title: 'ABC'})
+// todo.save().then(() => {
+
+// })
 
 const hostname = '127.0.0.1';
 const port = 3000;
 
-const todos = [
-  {
-    id: 1,
-    title: 'ABC',
-    completed: false,
-  },
-  {
-    id: 2,
-    title: 'DEF',
-    completed: true,
-  }
-];
+// const todos = [
+//   {
+//     id: 1,
+//     title: 'ABC',
+//     completed: false,
+//   },
+//   {
+//     id: 2,
+//     title: 'DEF',
+//     completed: true,
+//   }
+// ];
 
 /*
 Créer un serveur express avec 4 routes
@@ -39,28 +65,20 @@ app.use(cors());
 app.use(morgan('dev'));
 
 
-app.get('/todos', (req, res) => {
+app.get('/todos', async (req, res) => {
+  const todos = await Todo.find();
   res.json(todos);
 });
 
-app.post('/todos', express.json(), (req, res) => {
-  const lastTodo = todos.at(-1);
-
-  const nextId = lastTodo ? lastTodo.id + 1 : 1;
-
-  const todo = req.body;
-  todo.id = nextId;
-
-  todos.push(todo);
+app.post('/todos', express.json(), async (req, res) => {
+  const todo = await Todo.create(req.body);
 
   res.statusCode = 201;
   res.json(todo);
 });
 
-app.get('/todos/:id', (req, res) => {
-  const id = +req.params.id; // + converti en Number
-
-  const todo = todos.find((t) => t.id === id);
+app.get('/todos/:id', async (req, res) => {
+  const todo = await Todo.findById(req.params.id)
 
   if (!todo) {
     res.statusCode = 404;
@@ -70,18 +88,13 @@ app.get('/todos/:id', (req, res) => {
   res.json(todo);
 });
 
-app.delete('/todos/:id', (req, res) => {
-  const id = +req.params.id; // + converti en Number
-
-  const todo = todos.find((t) => t.id === id);
+app.delete('/todos/:id', async (req, res) => {
+  const todo = await Todo.findByIdAndDelete(req.params.id)
 
   if (!todo) {
     res.statusCode = 404;
     return res.json({msg: 'Todo not found'});
   }
-
-  const index = todos.indexOf(todo);
-  todos.splice(index, 1);
 
   res.json(todo);
 });
