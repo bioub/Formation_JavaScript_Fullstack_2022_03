@@ -1,4 +1,6 @@
 const express = require('express');
+const morgan = require('morgan');
+const cors = require('cors');
 
 const app = express();
 
@@ -21,14 +23,32 @@ const port = 3000;
 //   }
 // });
 
+app.use(cors()); // middleware (plugin) pour autoriser les requetes cross-origin
+app.use(morgan('dev')); // middleware de log
+
 app.get('/', (req, res) => {
   res.setHeader('Content-Type', 'text/plain');
   res.end('Home');
 });
 
-app.get('/hello', (req, res) => {
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello');
+app.get('/hello/:name', (req, res) => {
+  const name = req.params.name;
+  // res.sendFile
+  // res.redirect
+  // res.attachment
+  // res.download
+  // res.send(`<h2>Hello ${name}</h2>`); // appel .end
+  res.json({
+    msg: `Hello ${name}`
+  })
+});
+
+// express.json() IMPORTANT (middleware body-parser) créé req.body à partir de la requete
+app.post('/inscription', express.json(), (req, res) => {
+  console.log(req.body);
+  res.json({
+    msg: 'DONE',
+  });
 });
 
 app.use((req, res) => {
