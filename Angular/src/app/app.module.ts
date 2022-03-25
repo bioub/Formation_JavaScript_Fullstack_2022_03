@@ -3,24 +3,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloComponent } from './hello/hello.component';
-import { ClockComponent } from './clock/clock.component';
-import { SelectComponent } from './select/select.component';
-import { UserFormComponent } from './user-form/user-form.component';
-import { CounterComponent } from './counter/counter.component';
+import { DemosModule } from './demos/demos.module';
+import { HomeComponent } from './pages/home/home.component';
+import { AboutComponent } from './pages/about/about.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HelloComponent,
-    ClockComponent,
-    SelectComponent,
-    UserFormComponent,
-    CounterComponent
+    HomeComponent,
+    AboutComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    DemosModule,
+    AppRoutingModule, // à mettre en dernier (à cause de **)
   ],
   providers: [],
   bootstrap: [AppComponent]

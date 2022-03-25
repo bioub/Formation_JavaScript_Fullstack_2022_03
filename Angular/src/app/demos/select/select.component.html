@@ -1,0 +1,22 @@
+<div class="selected" (click)="menuOpen = !menuOpen">
+  {{ selected }}
+</div>
+<div class="menu" *ngIf="menuOpen">
+  <div class="item" *ngFor="let item of items" (click)="onItemClick(item)">
+    {{ item }}
+  </div>
+</div>
+
+
+<!-- <div class="menu" [ngStyle]="{ display: menuOpen ? 'block' : 'none' }">
+  Menu
+</div> -->
+<!-- <div class="menu" [ngClass]="{close: !menuOpen}">
+  Menu
+</div> -->
+
+<!-- <ng-template [ngIf]="menuOpen">
+  <div class="menu">
+    Menu
+  </div>
+</ng-template> -->

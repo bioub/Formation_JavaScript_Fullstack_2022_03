@@ -1,0 +1,13 @@
+<app-hello name="Toto"></app-hello>
+<app-hello [name]="'Toto'"></app-hello>
+<app-hello [name]="prenom"></app-hello>
+<app-clock></app-clock>
+
+<app-select [items]="prenoms" [selected]="prenom" (selectedChange)="prenom = $event"></app-select>
+
+<!-- [()] BANANA IN A BOX -->
+<app-select [items]="prenoms" [(selected)]="prenom"></app-select>
+
+<app-user-form></app-user-form>
+
+<app-counter></app-counter>
