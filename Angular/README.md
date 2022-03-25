@@ -1,27 +1,47 @@
-# Angular
+# Exercice
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
+Créer un composant Todos dans le module Todos
 
-## Development server
+Ajouter une route dans TodosRoutingModule, importer TodosModule dans AppModule
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Et créer un lien dans app.component.html
 
-## Code scaffolding
+Dans ce composant ajouter un formulaire avec un bouton + et un champs de saisi :
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+<form>
+  <input type="text">
+  <button>+</button>
+</form>
+```
 
-## Build
+Dans le fichier .ts créer une propriété todos qui contiendra :
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```
+this.todos = [
+  {
+    id: 1,
+    title: 'ABC',
+    completed: false,
+  },
+  {
+    id: 2,
+    title: 'DEF',
+    completed: true,
+  }
+];
+```
 
-## Running unit tests
+Afficher chaque todo dans le composant todos sous la forme :
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+  <div class="todo">
+    <input type="checkbox" checked>
+    <span>DEF</span>
+    <button>-</button>
+  </div>
+```
 
-## Running end-to-end tests
+Au submit du formulaire ajouter une todo au tableau (la liste doit se raffraichir)
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Au clic du bouton -, supprimer la todo du tableau (la liste doit se raffraichir)
