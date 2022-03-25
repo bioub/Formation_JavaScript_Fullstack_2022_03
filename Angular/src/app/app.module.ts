@@ -7,6 +7,7 @@ import { DemosModule } from './demos/demos.module';
 import { HomeComponent } from './pages/home/home.component';
 import { AboutComponent } from './pages/about/about.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TodosModule } from './todos/todos.module';
 
 
 @NgModule({
@@ -19,6 +20,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
   imports: [
     BrowserModule,
     DemosModule,
+    TodosModule,
     AppRoutingModule, // à mettre en dernier (à cause de **)
   ],
   providers: [],

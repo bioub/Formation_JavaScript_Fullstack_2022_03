@@ -1,0 +1,12 @@
+<form (submit)="addTodo($event)">
+  <input type="text" [formControl]="todoControl">
+  <button>+</button>
+</form>
+
+<div class="items">
+  <div class="todo" *ngFor="let todo of todos">
+    <input type="checkbox" [checked]="todo.completed">
+    <span>{{ todo.title }}</span>
+    <button (click)="deleteTodo(todo)">-</button>
+  </div>
+</div>
