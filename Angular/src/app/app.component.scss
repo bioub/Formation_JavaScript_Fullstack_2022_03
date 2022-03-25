@@ -1,0 +1,11 @@
+nav {
+  background-color: darken(cornflowerblue, 10%);
+  padding: 5px;
+  display: flex;
+  justify-content: space-around;
+
+  a {
+    color: white;
+    text-decoration: none;
+  }
+}

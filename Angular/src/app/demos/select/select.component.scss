@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  user-select: none;
+}
+
+.selected {
+  max-width: 200px;
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.menu {
+  max-width: 200px;
+  border: 1px solid black;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.item {
+  padding: 5px;
+}
